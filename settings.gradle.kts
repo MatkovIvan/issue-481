@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "Non_Common_API_Issue"
 include(":androidApp")
 include(":shared")
+include(":testmodule")
