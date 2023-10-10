@@ -9,7 +9,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                implementation("com.example:testmodule:1.0.0-LOCAL-11")
+                // TODO: Replace project reference to published one
+                // implementation("com.example:testmodule:1.0.0-LOCAL-1")
                 implementation(project(":testmodule"))
             }
         }
