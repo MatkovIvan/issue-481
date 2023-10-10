@@ -1,40 +1,21 @@
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    kotlin("multiplatform")
+    id("com.android.library")
+    id("maven-publish")
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
+        publishLibraryVariants("release")
     }
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "testmodule"
-        }
-    }
+    jvm("desktop")
 
     sourceSets {
         val commonMain by getting {
-            dependencies {
-                //put your multiplatform dependencies here
-            }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(libs.kotlin.test)
-            }
+        val androidMain by getting {
+        }
+        val desktopMain by getting {
         }
     }
 }
@@ -45,4 +26,10 @@ android {
     defaultConfig {
         minSdk = 24
     }
+    kotlin {
+        jvmToolchain(17)
+    }
 }
+
+group = "com.example"
+version = "1.0.0-LOCAL-1"

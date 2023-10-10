@@ -1,4 +1,5 @@
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "Non_Common_API_Issue"
+
 pluginManagement {
     repositories {
         google()
@@ -11,10 +12,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 
-rootProject.name = "Non_Common_API_Issue"
-include(":androidApp")
-include(":shared")
 include(":testmodule")
+include(":shared")
+
+include(":androidApp")
+include(":desktopApp")
